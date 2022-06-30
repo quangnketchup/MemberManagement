@@ -26,7 +26,6 @@ namespace MyStoreWinApp
 
         private void frmMemberDetail_Load(object sender, EventArgs e)
         {
-            cboCity.SelectedIndex = 0;
             txtMemberID.Enabled = !InsertOrUpdate;
             if (InsertOrUpdate == true)//update mode
             {

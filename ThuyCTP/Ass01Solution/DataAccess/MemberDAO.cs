@@ -9,9 +9,9 @@ using Microsoft.Data.SqlClient;
 namespace DataAccess
 {
     public class MemberDAO : BaseDAL
-    {
+    { 
+
         private static MemberDAO instance = null;
-       // private static readonly object instanceLock = new object();
        private static readonly object instanceLock = new object();
         private MemberDAO() { }
         public static MemberDAO Instance
@@ -45,7 +45,7 @@ namespace DataAccess
                     {
                         MemberID = dataReader.GetInt32(0),
                         MemberName = dataReader.GetString(1),
-                         Email= dataReader.GetString(2),
+                        Email= dataReader.GetString(2),
                         Password = dataReader.GetString(3),
                         City = dataReader.GetString(4),
                         Country = dataReader.GetString(5),
@@ -101,9 +101,6 @@ namespace DataAccess
             return car;
         }
 //================
-      
-
-
        public MemberObject GetMemberByName(string memberName)
         {
             MemberObject car = null;
@@ -112,7 +109,7 @@ namespace DataAccess
                 "From MemberObject Where MemberName LIKE @MemberName";
             try
             {
-                var param = dataProvider.CreateParameter("@MemberName", 16, memberName, DbType.String);
+                var param = dataProvider.CreateParameter("@MemberName", 50, memberName, DbType.String);
                 dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
                 if (dataReader.Read())
                 {
@@ -153,8 +150,8 @@ namespace DataAccess
                     parameters.Add(dataProvider.CreateParameter("@MemberName", 50, member.MemberName, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Email", 50, member.Email, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Password", 50, member.Password, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@City", 4, member.City, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@Country", 5, member.Country, DbType.String));
+                    parameters.Add(dataProvider.CreateParameter("@City", 50, member.City, DbType.String));
+                    parameters.Add(dataProvider.CreateParameter("@Country", 50, member.Country, DbType.String));
                     dataProvider.Insert(SQLInsert, CommandType.Text, parameters.ToArray());
                 }
                 else
@@ -179,15 +176,15 @@ namespace DataAccess
                 MemberObject c = GetMemberByID(member.MemberID);
                 if (c != null)
                 {
-                    string SQLUpdate = "Update Cars Set MemberName= @MemberName, Email = @Email," +
+                    string SQLUpdate = "Update MemberObject Set MemberName= @MemberName, Email = @Email," +
                         "Password=@Password, City=@City, Country=@Country WHERE MemberID = @MemberID";
                     var parameters = new List<SqlParameter>();
                     parameters.Add(dataProvider.CreateParameter("@MemberID", 4, member.MemberID, DbType.Int32));
                     parameters.Add(dataProvider.CreateParameter("@MemberName", 50, member.MemberName, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Email", 50, member.Email, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Password", 50, member.Password, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@City", 4, member.City, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@Country", 5, member.Country, DbType.String));
+                    parameters.Add(dataProvider.CreateParameter("@City", 50, member.City, DbType.String));
+                    parameters.Add(dataProvider.CreateParameter("@Country", 50, member.Country, DbType.String));
                     dataProvider.Update(SQLUpdate, CommandType.Text, parameters.ToArray());
                 }
                 else
@@ -206,20 +203,20 @@ namespace DataAccess
         }
         //------------------------------------------------------------------
         //Remove a member
-        public void Remove(int MemberID)
+        public void Remove(int memberID)
         {
             try
             {
-                MemberObject car = GetMemberByID(MemberID);
+                MemberObject car = GetMemberByID(memberID);
                 if (car != null)
                 {
-                    string SQLDelete = "Delete Cars WHERE MemberID= @MemberID";
-                    var param = dataProvider.CreateParameter("@MemberID", 4, MemberID, DbType.Int32);
+                    string SQLDelete = "Delete MemberObject WHERE MemberID = @MemberID";
+                    var param = dataProvider.CreateParameter("@MemberID", 4, memberID, DbType.Int32);
                     dataProvider.Delete(SQLDelete, CommandType.Text, param);
                 }
                 else
                 {
-                    throw new Exception("There car does not already exist");
+                    throw new Exception("There member does not already exist");
                 }
             }
             catch (Exception ex)

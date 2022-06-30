@@ -183,6 +183,7 @@ namespace MyStoreWinApp
                 //Set focus member inserted
                 source.Position = source.Count - 1;
             }
+
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {

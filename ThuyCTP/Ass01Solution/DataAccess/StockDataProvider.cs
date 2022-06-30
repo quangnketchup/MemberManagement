@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.SqlClient;
+using DataAccess;
 using System.Data;
 using Microsoft.Data.SqlClient;
+
 namespace DataAccess
 {
     public class StockDataProvider
     {
+
         public StockDataProvider() { }
         private string ConnectionString { get; set; }
         public StockDataProvider(string connectionString) => ConnectionString = connectionString;
@@ -71,7 +74,7 @@ namespace DataAccess
                 {
                     foreach (var param in parameters)
                     {
-                        command.Parameters.Add(parameters);
+                        command.Parameters.Add(param);
                     }
                 }
                 command.ExecuteNonQuery();
@@ -98,7 +101,7 @@ namespace DataAccess
                 {
                     foreach (var parameter in parameters)
                     {
-                        command.Parameters.Add(parameters);
+                        command.Parameters.Add(parameter);
                     }
                 }
                 command.ExecuteNonQuery();
@@ -123,7 +126,7 @@ namespace DataAccess
                 {
                     foreach (var parameter in parameters)
                     {
-                        command.Parameters.Add(parameters);
+                        command.Parameters.Add(parameter);
                     }
                 }
                 command.ExecuteNonQuery();

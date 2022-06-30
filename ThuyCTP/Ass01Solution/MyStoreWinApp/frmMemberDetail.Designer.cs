@@ -39,10 +39,10 @@ namespace MyStoreWinApp
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtMemberName = new System.Windows.Forms.TextBox();
             this.txtMemberID = new System.Windows.Forms.TextBox();
-            this.cboCity = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.cboCountry = new System.Windows.Forms.ComboBox();
+            this.cboCountry = new System.Windows.Forms.TextBox();
+            this.cboCity = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbMemberID
@@ -128,20 +128,6 @@ namespace MyStoreWinApp
             this.txtMemberID.Size = new System.Drawing.Size(290, 27);
             this.txtMemberID.TabIndex = 10;
             // 
-            // cboCity
-            // 
-            this.cboCity.FormattingEnabled = true;
-            this.cboCity.Items.AddRange(new object[] {
-            "Ho Chi Minh",
-            "Da Nang",
-            "Ha Noi",
-            "Phu Quoc",
-            "Vung Tau"});
-            this.cboCity.Location = new System.Drawing.Point(343, 319);
-            this.cboCity.Name = "cboCity";
-            this.cboCity.Size = new System.Drawing.Size(290, 28);
-            this.cboCity.TabIndex = 11;
-            // 
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -166,26 +152,27 @@ namespace MyStoreWinApp
             // 
             // cboCountry
             // 
-            this.cboCountry.FormattingEnabled = true;
-            this.cboCountry.Items.AddRange(new object[] {
-            "Viet Nam",
-            "America",
-            "United State",
-            "United Kingdom"});
-            this.cboCountry.Location = new System.Drawing.Point(343, 252);
+            this.cboCountry.Location = new System.Drawing.Point(343, 255);
             this.cboCountry.Name = "cboCountry";
-            this.cboCountry.Size = new System.Drawing.Size(290, 28);
+            this.cboCountry.Size = new System.Drawing.Size(290, 27);
             this.cboCountry.TabIndex = 15;
+            // 
+            // cboCity
+            // 
+            this.cboCity.Location = new System.Drawing.Point(343, 316);
+            this.cboCity.Name = "cboCity";
+            this.cboCity.Size = new System.Drawing.Size(290, 27);
+            this.cboCity.TabIndex = 16;
             // 
             // frmMemberDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.cboCity);
             this.Controls.Add(this.cboCountry);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.cboCity);
             this.Controls.Add(this.txtMemberID);
             this.Controls.Add(this.txtMemberName);
             this.Controls.Add(this.txtEmail);
@@ -216,9 +203,9 @@ namespace MyStoreWinApp
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtMemberName;
         private System.Windows.Forms.TextBox txtMemberID;
-        private System.Windows.Forms.ComboBox cboCity;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ComboBox cboCountry;
+        private System.Windows.Forms.TextBox cboCountry;
+        private System.Windows.Forms.TextBox cboCity;
     }
 }
