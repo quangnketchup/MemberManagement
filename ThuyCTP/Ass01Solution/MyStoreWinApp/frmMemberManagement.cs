@@ -40,8 +40,8 @@ namespace MyStoreWinApp
                 txtPassword.Enabled = false;
                 btnDelete.Enabled = false;
                 btnFind.Enabled = false;
-                cboSearchCity.Enabled = false;
-                cboSearchCountry.Enabled = false;
+                cboFillterName.Enabled = false;
+                cboFillter.Enabled = false;
                 dgvMemberList.CellDoubleClick += null;
             }
             else
@@ -203,7 +203,61 @@ namespace MyStoreWinApp
         {
             this.Close();
         }
-        private void LoadOneMember()
+
+        private void SearchMember2()
+        {
+            var members = memberRepository.GetMembers();
+            List<MemberObject> listmem = new List<MemberObject>();
+            foreach (var member in members)
+            {
+                if (member.MemberID.ToString().Equals(txtSearch.Text))
+                {
+                    listmem.Add(member);
+                }
+                else if(member.MemberName.Contains(txtSearch.Text))
+                {
+                    listmem.Add(member);
+                }
+            }
+            try
+            {
+                source = new BindingSource();
+                source.DataSource = listmem;
+
+                txtMemberID.DataBindings.Clear();
+                txtMemberName.DataBindings.Clear();
+                txtPassword.DataBindings.Clear();
+                txtEmail.DataBindings.Clear();
+                cboCountry.DataBindings.Clear();
+                cboCity.DataBindings.Clear();
+
+                txtMemberID.DataBindings.Add("Text", source, "MemberID");
+                txtMemberName.DataBindings.Add("Text", source, "MemberName");
+                txtPassword.DataBindings.Add("Text", source, "Password");
+                txtEmail.DataBindings.Add("Text", source, "Email");
+                cboCountry.DataBindings.Add("Text", source, "Country");
+                cboCity.DataBindings.Add("Text", source, "City");
+
+
+                dgvMemberList.DataSource = null;
+                if(listmem.Count == 0)
+                {
+                    ClearText();
+                    btnDelete.Enabled = false;
+                }
+                else
+                {
+                    dgvMemberList.DataSource = null;
+                    dgvMemberList.DataSource = source;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Load member list");
+            }
+        }
+
+        private void SearchMember()
         {
             MemberObject member = new MemberObject();
             var members = memberRepository.GetMembers();
@@ -213,12 +267,12 @@ namespace MyStoreWinApp
                 {
                     //The BindingSource omponent is designed to simplify
                     //the process of binding controls to an underlying data source
-                    if (i.MemberName.Equals(txtSearch.Text))
+                    if (i.MemberName.Contains(txtSearch.Text))
                     {
                         source = new BindingSource();
 
 
-                        source.DataSource = memberRepository.GetMemberByID(i.MemberID);
+                        source.DataSource = memberRepository.GetMemberByName(i.MemberName);
 
                         txtMemberID.DataBindings.Clear();
                         txtMemberName.DataBindings.Clear();
@@ -279,14 +333,82 @@ namespace MyStoreWinApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
 
-            LoadOneMember();
+            SearchMember2();
+        }
+
+        private void cboFillter_SelectCity(object sender, EventArgs e)
+        {
+            cboFillter.Text = cboFillter.GetItemText(cboFillter.SelectedItem);
+            if(cboFillter.Text.Equals("United State"))
+            {
+                cboFillterName.SelectedIndex = -1;
+                cboFillterName.Items.Clear();
+                cboFillterName.Items.Add("New York");
+                cboFillterName.Items.Add("San Diego");
+                cboFillterName.Items.Add("Houston");
+            }
+            else if (cboFillter.Text.Equals("Viet Nam"))
+            {
+                cboFillterName.SelectedIndex = -1;
+                cboFillterName.Items.Clear();
+                cboFillterName.Items.Add("Phu Quoc");
+                cboFillterName.Items.Add("Da Nang");
+                cboFillterName.Items.Add("Sai gon");
+            }
+        }
+
+        private void FillterByCoutryCity()
+        {
+            var members = memberRepository.GetMembers();
+            List<MemberObject> listFill = new List<MemberObject>();
+
+            foreach (MemberObject member in members)
+            {
+                if (member.City.Contains(cboFillterName.Text) && member.Country.Contains(cboFillter.Text))
+                {
+                    listFill.Add(member);
+                }
+            }
+            try
+            {
+                if (listFill.Count == 0)
+                {
+                    MessageBox.Show("No member matched", "No result");
+                }
+                else if (listFill.Count != 0)
+                {
+                    source = new BindingSource();
+                    source.DataSource = listFill.OrderByDescending(member => member.MemberName);
+                    txtMemberID.DataBindings.Clear();
+                    txtMemberName.DataBindings.Clear();
+                    txtPassword.DataBindings.Clear();
+                    txtEmail.DataBindings.Clear();
+                    cboCountry.DataBindings.Clear();
+                    cboCity.DataBindings.Clear();
+
+                    txtMemberID.DataBindings.Add("Text", source, "MemberID");
+                    txtMemberName.DataBindings.Add("Text", source, "MemberName");
+                    txtPassword.DataBindings.Add("Text", source, "Password");
+                    txtEmail.DataBindings.Add("Text", source, "Email");
+                    cboCountry.DataBindings.Add("Text", source, "Country");
+                    cboCity.DataBindings.Add("Text", source, "City");
+
+
+                    dgvMemberList.DataSource = null;
+                    dgvMemberList.DataSource = source;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Load member list");
+            }
         }
 
         private void FilterMember()
         {
 
             MemberObject member = new MemberObject();
-            List<MemberObject> filterList = memberRepository.GetMemberByCityAndCountry(cboSearchCity.Text, cboSearchCountry.Text);
+            List<MemberObject> filterList = memberRepository.GetMemberByCityAndCountry(cboFillterName.Text, cboFillter.Text);
             try
             {
 
@@ -328,7 +450,7 @@ namespace MyStoreWinApp
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            FilterMember();
+            FillterByCoutryCity();
         }
         private void cboSearchCity_SelectedIndexChanged(object sender, EventArgs e)
         {
