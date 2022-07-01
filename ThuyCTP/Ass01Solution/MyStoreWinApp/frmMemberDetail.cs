@@ -39,6 +39,27 @@ namespace MyStoreWinApp
             }
         }
 
+        private void cboFillter_SelectCity(object sender, EventArgs e)
+        {
+            cboCountry.Text = cboCountry.GetItemText(cboCountry.SelectedItem);
+            if (cboCountry.Text.Equals("United State"))
+            {
+                cboCity.SelectedIndex = -1;
+                cboCity.Items.Clear();
+                cboCity.Items.Add("New York");
+                cboCity.Items.Add("San Diego");
+                cboCity.Items.Add("Houston");
+            }
+            else if (cboCountry.Text.Equals("Viet Nam"))
+            {
+                cboCity.SelectedIndex = -1;
+                cboCity.Items.Clear();
+                cboCity.Items.Add("Phu Quoc");
+                cboCity.Items.Add("Da Nang");
+                cboCity.Items.Add("Sai gon");
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try

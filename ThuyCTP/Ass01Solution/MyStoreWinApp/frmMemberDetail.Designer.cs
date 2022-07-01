@@ -41,8 +41,8 @@ namespace MyStoreWinApp
             this.txtMemberID = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.cboCountry = new System.Windows.Forms.TextBox();
-            this.cboCity = new System.Windows.Forms.TextBox();
+            this.cboCountry = new System.Windows.Forms.ComboBox();
+            this.cboCity = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbMemberID
@@ -152,17 +152,23 @@ namespace MyStoreWinApp
             // 
             // cboCountry
             // 
+            this.cboCountry.FormattingEnabled = true;
+            this.cboCountry.Items.AddRange(new object[] {
+            "United State",
+            "Viet Nam"});
             this.cboCountry.Location = new System.Drawing.Point(343, 255);
             this.cboCountry.Name = "cboCountry";
-            this.cboCountry.Size = new System.Drawing.Size(290, 27);
-            this.cboCountry.TabIndex = 15;
+            this.cboCountry.Size = new System.Drawing.Size(290, 28);
+            this.cboCountry.TabIndex = 17;
+            this.cboCountry.SelectionChangeCommitted += new System.EventHandler(this.cboFillter_SelectCity);
             // 
             // cboCity
             // 
+            this.cboCity.FormattingEnabled = true;
             this.cboCity.Location = new System.Drawing.Point(343, 316);
             this.cboCity.Name = "cboCity";
-            this.cboCity.Size = new System.Drawing.Size(290, 27);
-            this.cboCity.TabIndex = 16;
+            this.cboCity.Size = new System.Drawing.Size(290, 28);
+            this.cboCity.TabIndex = 18;
             // 
             // frmMemberDetail
             // 
@@ -205,7 +211,7 @@ namespace MyStoreWinApp
         private System.Windows.Forms.TextBox txtMemberID;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox cboCountry;
-        private System.Windows.Forms.TextBox cboCity;
+        private ComboBox cboCountry;
+        private ComboBox cboCity;
     }
 }
