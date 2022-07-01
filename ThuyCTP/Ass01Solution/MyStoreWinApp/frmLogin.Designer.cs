@@ -42,7 +42,7 @@ namespace MyStoreWinApp
             // 
             this.lbLogin.AutoSize = true;
             this.lbLogin.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbLogin.Location = new System.Drawing.Point(363, 55);
+            this.lbLogin.Location = new System.Drawing.Point(366, 33);
             this.lbLogin.Name = "lbLogin";
             this.lbLogin.Size = new System.Drawing.Size(90, 38);
             this.lbLogin.TabIndex = 0;
@@ -51,7 +51,7 @@ namespace MyStoreWinApp
             // lbUsername
             // 
             this.lbUsername.AutoSize = true;
-            this.lbUsername.Location = new System.Drawing.Point(164, 136);
+            this.lbUsername.Location = new System.Drawing.Point(156, 136);
             this.lbUsername.Name = "lbUsername";
             this.lbUsername.Size = new System.Drawing.Size(75, 20);
             this.lbUsername.TabIndex = 1;
@@ -60,7 +60,7 @@ namespace MyStoreWinApp
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(164, 199);
+            this.lbPassword.Location = new System.Drawing.Point(156, 199);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(70, 20);
             this.lbPassword.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace MyStoreWinApp
             // 
             this.txtUserName.Location = new System.Drawing.Point(275, 133);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(272, 27);
+            this.txtUserName.Size = new System.Drawing.Size(291, 27);
             this.txtUserName.TabIndex = 3;
             // 
             // txtPassword
@@ -78,7 +78,7 @@ namespace MyStoreWinApp
             this.txtPassword.Location = new System.Drawing.Point(275, 199);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(272, 27);
+            this.txtPassword.Size = new System.Drawing.Size(291, 27);
             this.txtPassword.TabIndex = 4;
             // 
             // btnLog
@@ -87,7 +87,7 @@ namespace MyStoreWinApp
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(94, 29);
             this.btnLog.TabIndex = 5;
-            this.btnLog.Text = "&Log";
+            this.btnLog.Text = "&Login";
             this.btnLog.UseVisualStyleBackColor = true;
             this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
             // 

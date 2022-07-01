@@ -62,7 +62,7 @@ namespace MyStoreWinApp
             this.cboFillter.Items.AddRange(new object[] {
             "United State",
             "Viet Nam"});
-            this.cboFillter.Location = new System.Drawing.Point(444, 302);
+            this.cboFillter.Location = new System.Drawing.Point(433, 241);
             this.cboFillter.Name = "cboFillter";
             this.cboFillter.Size = new System.Drawing.Size(181, 28);
             this.cboFillter.TabIndex = 19;
@@ -71,7 +71,7 @@ namespace MyStoreWinApp
             // cboFillterName
             // 
             this.cboFillterName.FormattingEnabled = true;
-            this.cboFillterName.Location = new System.Drawing.Point(668, 301);
+            this.cboFillterName.Location = new System.Drawing.Point(670, 240);
             this.cboFillterName.Name = "cboFillterName";
             this.cboFillterName.Size = new System.Drawing.Size(181, 28);
             this.cboFillterName.TabIndex = 21;
@@ -206,7 +206,7 @@ namespace MyStoreWinApp
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(386, 527);
+            this.btnClose.Location = new System.Drawing.Point(419, 527);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);
             this.btnClose.TabIndex = 15;
@@ -217,26 +217,26 @@ namespace MyStoreWinApp
             // dgvMemberList
             // 
             this.dgvMemberList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMemberList.Location = new System.Drawing.Point(12, 335);
+            this.dgvMemberList.Location = new System.Drawing.Point(12, 288);
             this.dgvMemberList.Name = "dgvMemberList";
             this.dgvMemberList.ReadOnly = true;
             this.dgvMemberList.RowHeadersWidth = 51;
             this.dgvMemberList.RowTemplate.Height = 29;
             this.dgvMemberList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMemberList.Size = new System.Drawing.Size(950, 168);
+            this.dgvMemberList.Size = new System.Drawing.Size(950, 233);
             this.dgvMemberList.TabIndex = 16;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(12, 302);
+            this.txtSearch.Location = new System.Drawing.Point(14, 241);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Seach member";
+            this.txtSearch.PlaceholderText = "Seach member id , name";
             this.txtSearch.Size = new System.Drawing.Size(202, 27);
             this.txtSearch.TabIndex = 17;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(234, 302);
+            this.btnSearch.Location = new System.Drawing.Point(236, 241);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(94, 29);
             this.btnSearch.TabIndex = 18;
@@ -259,7 +259,7 @@ namespace MyStoreWinApp
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(869, 301);
+            this.btnFind.Location = new System.Drawing.Point(871, 240);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(94, 29);
             this.btnFind.TabIndex = 22;
@@ -270,7 +270,7 @@ namespace MyStoreWinApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(374, 305);
+            this.label1.Location = new System.Drawing.Point(363, 244);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 20);
             this.label1.TabIndex = 23;
@@ -279,7 +279,7 @@ namespace MyStoreWinApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(631, 304);
+            this.label2.Location = new System.Drawing.Point(633, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 20);
             this.label2.TabIndex = 24;

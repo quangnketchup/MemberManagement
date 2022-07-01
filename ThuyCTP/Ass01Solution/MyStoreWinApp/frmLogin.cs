@@ -34,50 +34,52 @@ namespace MyStoreWinApp
 
             // get contents
 
-            var admin = new MemberObject
+            string Email = obj["DefaultAccount"]["Email"];
+            string Password = obj["DefaultAccount"]["password"];
+            bool isMem = false;
+
+            if (Email.Equals(txtUserName.Text) && Password.Equals(txtPassword.Text))
             {
-                Email = obj["DefaultAccount"]["Email"],
-                Password = obj["DefaultAccount"]["password"]
-            };
+                frmMemberManagement frm = new frmMemberManagement()
+                {
+                    isAdmin = true
+                };
+                frm.ShowDialog();
+                isMem = true;
 
+                this.Close();
 
+            }
 
             // add employees to richtextbox
 
-
-
             var members = memberRepository.GetMembers();
+
             foreach (var i in members)
             {
-                if (i.MemberName.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text))
+                if (i.Email.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text))
                 {
                     frmMemberManagement frm = new frmMemberManagement()
                     {
                         isAdmin = false
                     };
                     frm.ShowDialog();
+                    isMem = true;
 
                     this.Close();
                     break;
 
                 }
-                else if (admin.Email.Equals(txtUserName.Text) && admin.Password.Equals(txtPassword.Text))
-                {
-                    frmMemberManagement frm = new frmMemberManagement()
-                    {
-                        isAdmin = true
-                    };
-                    frm.ShowDialog();
 
-                    this.Close();
-                    break;
+            }
+            if (isMem == true)
+            {
+                MessageBox.Show("Login Success", "Right user");
+            }
+            else
+            {
+                MessageBox.Show("Wrong user name or pass word, please try again", "Wrong user");
 
-                }
-                else
-                {
-                    MessageBox.Show("Wrong user name or pass word, please try again", "Wrong user");
-                    break;
-                }
             }
         }
 

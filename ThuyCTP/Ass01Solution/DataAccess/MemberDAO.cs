@@ -35,13 +35,13 @@ namespace DataAccess
         {
             IDataReader dataReader = null;
             string SQLSelect = "Select MemberID, MemberName, Email, Password, City, Country FROM MemberObject";
-            var cars = new List<MemberObject>();
+            var members = new List<MemberObject>();
             try
             {
                 dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection);
                 while (dataReader.Read())
                 {
-                    cars.Add(new MemberObject
+                    members.Add(new MemberObject
                     {
                         MemberID = dataReader.GetInt32(0),
                         MemberName = dataReader.GetString(1),
@@ -63,12 +63,12 @@ namespace DataAccess
                 CloseConnection();
             }
 
-            return cars;
+            return members;
         }
         //----------------------------------------------------------------
         public MemberObject GetMemberByID(int memberID)
         {
-            MemberObject car = null;
+            MemberObject member = null;
             IDataReader dataReader = null;
             string SQLSelect = "Select MemberID, MemberName, Email, Password, City, Country " +
                 "From MemberObject Where MemberID = @MemberID";
@@ -78,7 +78,7 @@ namespace DataAccess
                 dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
                 if (dataReader.Read())
                 {
-                    car = new MemberObject
+                    member = new MemberObject
                     {
                         MemberID = dataReader.GetInt32(0),
                         MemberName = dataReader.GetString(1),
@@ -98,12 +98,12 @@ namespace DataAccess
                 dataReader.Close();
                 CloseConnection();
             }
-            return car;
+            return member;
         }
 //================
        public MemberObject GetMemberByName(string memberName)
         {
-            MemberObject car = null;
+            MemberObject member = null;
             IDataReader dataReader = null;
             string SQLSelect = "Select MemberID, MemberName, Email, Password, City, Country " +
                 "From MemberObject Where MemberName LIKE @MemberName";
@@ -113,7 +113,7 @@ namespace DataAccess
                 dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
                 if (dataReader.Read())
                 {
-                    car = new MemberObject
+                    member = new MemberObject
                     {
                         MemberID = dataReader.GetInt32(0),
                         MemberName = dataReader.GetString(1),
@@ -133,7 +133,7 @@ namespace DataAccess
                 dataReader.Close();
                 CloseConnection();
             }
-            return car;
+            return member;
         }
         //-----------------------------------------------------------------
         //Add a new member
@@ -173,8 +173,8 @@ namespace DataAccess
         {
             try
             {
-                MemberObject c = GetMemberByID(member.MemberID);
-                if (c != null)
+                MemberObject mem = GetMemberByID(member.MemberID);
+                if (mem != null)
                 {
                     string SQLUpdate = "Update MemberObject Set MemberName= @MemberName, Email = @Email," +
                         "Password=@Password, City=@City, Country=@Country WHERE MemberID = @MemberID";
@@ -207,8 +207,8 @@ namespace DataAccess
         {
             try
             {
-                MemberObject car = GetMemberByID(memberID);
-                if (car != null)
+                MemberObject member = GetMemberByID(memberID);
+                if (member != null)
                 {
                     string SQLDelete = "Delete MemberObject WHERE MemberID = @MemberID";
                     var param = dataProvider.CreateParameter("@MemberID", 4, memberID, DbType.Int32);
@@ -232,10 +232,7 @@ namespace DataAccess
         public List<MemberObject> GetMemberByCityAndCountry(string city, string country)
         {
             List<MemberObject> FList = new List<MemberObject>();
-           /* for (int i = 1; i <= MemberList.Count; i++)
-            {
-                if (MemberList[i - 1].City == city && MemberList[i - 1].Country == country) { FList.Add(MemberList[i - 1]); }
-            }*/
+          
             return FList;
         }
     }
