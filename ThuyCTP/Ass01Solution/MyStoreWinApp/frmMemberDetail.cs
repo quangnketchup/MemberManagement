@@ -37,7 +37,7 @@ namespace MyStoreWinApp
                 txtPassword.Text = MemberInfor.Password;
             }
         }
-
+        //Filter for city
         private void cboFillter_SelectCity(object sender, EventArgs e)
         {
             cboCountry.Text = cboCountry.GetItemText(cboCountry.SelectedItem);
@@ -59,6 +59,7 @@ namespace MyStoreWinApp
             }
         }
 
+        //Create Member Filter by admin
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
