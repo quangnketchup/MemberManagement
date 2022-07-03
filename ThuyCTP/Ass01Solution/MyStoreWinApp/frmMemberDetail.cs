@@ -27,9 +27,8 @@ namespace MyStoreWinApp
         private void frmMemberDetail_Load(object sender, EventArgs e)
         {
             txtMemberID.Enabled = !InsertOrUpdate;
-            if (InsertOrUpdate == true)//update mode
+            if (InsertOrUpdate == true)
             {
-                //Show member to perform updating
                 txtMemberID.Text = MemberInfor.MemberID.ToString();
                 txtMemberName.Text = MemberInfor.MemberName;
                 cboCity.Text = MemberInfor.City;

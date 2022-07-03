@@ -7,7 +7,6 @@ namespace DataAccess.Repository
     {
         public MemberObject GetMemberByID(int memId) => MemberDAO.Instance.GetMemberByID(memId);
         public MemberObject GetMemberByName(string memName) => MemberDAO.Instance.GetMemberByName(memName);
-
         public IEnumerable<MemberObject> GetMembers() => MemberDAO.Instance.GetMemberList();
         public void InsertMember(MemberObject member) => MemberDAO.Instance.AddNew(member);
         public void DeleteMember(int memId) => MemberDAO.Instance.Remove(memId);

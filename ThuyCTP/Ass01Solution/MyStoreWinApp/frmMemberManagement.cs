@@ -15,7 +15,6 @@ namespace MyStoreWinApp
     {
         public bool isAdmin { get; set; }
         IMemberRepository memberRepository = new MemberRepository();
-        //Create a data source
         BindingSource source;
 
         //----------------------------------------
@@ -47,7 +46,6 @@ namespace MyStoreWinApp
             else
             {
                 btnDelete.Enabled = false;
-                //Register this event to open the frmMemberDetail form that performs updating
                 dgvMemberList.CellDoubleClick += DgvMemberList_CellDoubleClick;
             }
         }
@@ -55,8 +53,6 @@ namespace MyStoreWinApp
         private void DgvMemberList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             frmMemberDetail frmMemberDetails = new frmMemberDetail
-
-
 
             {
                 Text = "Update member",
@@ -67,11 +63,9 @@ namespace MyStoreWinApp
             if (frmMemberDetails.ShowDialog() == DialogResult.OK)
             {
                 LoadMemberList();
-                //Set focus member updated
                 source.Position = source.Count - 1;
             }
         }
-        //Clear text on TextBoxes
         private void ClearText()
         {
             txtMemberID.Text = string.Empty;
@@ -109,8 +103,6 @@ namespace MyStoreWinApp
 
             try
             {
-                //The BindingSource omponent is designed to simplify
-                //the process of binding controls to an underlying data source
                 source = new BindingSource();
                 source.DataSource = members.OrderByDescending(member => member.MemberName);
                 txtMemberID.DataBindings.Clear();
@@ -163,10 +155,7 @@ namespace MyStoreWinApp
         //------------------------------------------------------
         private void btnLoad_Click(object sender, EventArgs e)
         {
-
             LoadMemberList();
-
-
         }
         //-----------------------------------------------------
         private void btnNew_Click(object sender, EventArgs e)
@@ -180,7 +169,6 @@ namespace MyStoreWinApp
             if (frmMemberDetails.ShowDialog() == DialogResult.OK)
             {
                 LoadMemberList();
-                //Set focus member inserted
                 source.Position = source.Count - 1;
             }
 
@@ -238,7 +226,6 @@ namespace MyStoreWinApp
                 cboCountry.DataBindings.Add("Text", source, "Country");
                 cboCity.DataBindings.Add("Text", source, "City");
 
-
                 dgvMemberList.DataSource = null;
                 if(listmem.Count == 0)
                 {
@@ -265,15 +252,11 @@ namespace MyStoreWinApp
             {
                 foreach (var i in members)
                 {
-                    //The BindingSource omponent is designed to simplify
-                    //the process of binding controls to an underlying data source
                     if (i.MemberName.Contains(txtSearch.Text))
                     {
                         source = new BindingSource();
 
-
                         source.DataSource = memberRepository.GetMemberByName(i.MemberName);
-
                         txtMemberID.DataBindings.Clear();
                         txtMemberName.DataBindings.Clear();
                         txtPassword.DataBindings.Clear();
@@ -288,7 +271,6 @@ namespace MyStoreWinApp
                         cboCountry.DataBindings.Add("Text", source, "Country");
                         cboCity.DataBindings.Add("Text", source, "City");
 
-
                         dgvMemberList.DataSource = null;
                         dgvMemberList.DataSource = source;
                         break;
@@ -296,8 +278,6 @@ namespace MyStoreWinApp
                     else if (i.MemberID.ToString().Equals(txtSearch.Text))
                     {
                         source = new BindingSource();
-
-
                         source.DataSource = memberRepository.GetMemberByID(i.MemberID);
 
                         txtMemberID.DataBindings.Clear();
@@ -329,10 +309,8 @@ namespace MyStoreWinApp
             }
         }
 
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
             SearchMember2();
         }
 
@@ -393,7 +371,6 @@ namespace MyStoreWinApp
                     cboCountry.DataBindings.Add("Text", source, "Country");
                     cboCity.DataBindings.Add("Text", source, "City");
 
-
                     dgvMemberList.DataSource = null;
                     dgvMemberList.DataSource = source;
                 }
@@ -411,7 +388,6 @@ namespace MyStoreWinApp
             List<MemberObject> filterList = memberRepository.GetMemberByCityAndCountry(cboFillterName.Text, cboFillter.Text);
             try
             {
-
                 if (filterList.Count == 0)
                 {
                     MessageBox.Show("No member matched", "No result");
@@ -434,7 +410,6 @@ namespace MyStoreWinApp
                     cboCountry.DataBindings.Add("Text", source, "Country");
                     cboCity.DataBindings.Add("Text", source, "City");
 
-
                     dgvMemberList.DataSource = null;
                     dgvMemberList.DataSource = source;
                 }
@@ -446,21 +421,9 @@ namespace MyStoreWinApp
             }
         }
 
-
-
         private void btnFind_Click(object sender, EventArgs e)
         {
             FillterByCoutryCity();
-        }
-        private void cboSearchCity_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // searchCity= cboSearchCity.Text;
-        }
-
-        private void cboSearchCountry_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // searchCountry= cboSearchCountry.Text;
-
         }
 
     }

@@ -20,8 +20,6 @@ namespace MyStoreWinApp
         private void btnLog_Click(object sender, EventArgs e)
         {
             string json = string.Empty;
-
-            // read json string from file
             using (StreamReader reader = new StreamReader("appsettings.json"))
             {
                 json = reader.ReadToEnd();
@@ -29,13 +27,9 @@ namespace MyStoreWinApp
 
             JavaScriptSerializer jss = new JavaScriptSerializer();
 
-            // convert json string to dynamic type
             var obj = jss.Deserialize<dynamic>(json);
-
-            // get contents
-
             string Email = obj["DefaultAccount"]["Email"];
-            string Password = obj["DefaultAccount"]["password"];
+            string Password = obj["DefaultAccount"]["Password"];
             bool isMem = false;
 
             if (Email.Equals(txtUserName.Text) && Password.Equals(txtPassword.Text))
@@ -50,8 +44,6 @@ namespace MyStoreWinApp
                 this.Close();
 
             }
-
-            // add employees to richtextbox
 
             var members = memberRepository.GetMembers();
 
@@ -78,7 +70,7 @@ namespace MyStoreWinApp
             }
             else
             {
-                MessageBox.Show("Wrong user name or pass word, please try again", "Wrong user");
+                MessageBox.Show("Wrong username/Email or password, please try again", "Wrong user");
 
             }
         }

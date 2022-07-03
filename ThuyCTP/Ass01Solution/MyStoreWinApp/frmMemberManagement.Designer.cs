@@ -62,7 +62,7 @@ namespace MyStoreWinApp
             this.cboFillter.Items.AddRange(new object[] {
             "United State",
             "Viet Nam"});
-            this.cboFillter.Location = new System.Drawing.Point(433, 241);
+            this.cboFillter.Location = new System.Drawing.Point(423, 241);
             this.cboFillter.Name = "cboFillter";
             this.cboFillter.Size = new System.Drawing.Size(181, 28);
             this.cboFillter.TabIndex = 19;
@@ -71,7 +71,7 @@ namespace MyStoreWinApp
             // cboFillterName
             // 
             this.cboFillterName.FormattingEnabled = true;
-            this.cboFillterName.Location = new System.Drawing.Point(670, 240);
+            this.cboFillterName.Location = new System.Drawing.Point(660, 240);
             this.cboFillterName.Name = "cboFillterName";
             this.cboFillterName.Size = new System.Drawing.Size(181, 28);
             this.cboFillterName.TabIndex = 21;
@@ -259,7 +259,7 @@ namespace MyStoreWinApp
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(871, 240);
+            this.btnFind.Location = new System.Drawing.Point(861, 240);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(94, 29);
             this.btnFind.TabIndex = 22;
@@ -270,7 +270,7 @@ namespace MyStoreWinApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(363, 244);
+            this.label1.Location = new System.Drawing.Point(353, 244);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 20);
             this.label1.TabIndex = 23;
@@ -279,7 +279,7 @@ namespace MyStoreWinApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(633, 243);
+            this.label2.Location = new System.Drawing.Point(623, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 20);
             this.label2.TabIndex = 24;

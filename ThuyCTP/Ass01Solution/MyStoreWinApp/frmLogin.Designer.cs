@@ -51,16 +51,16 @@ namespace MyStoreWinApp
             // lbUsername
             // 
             this.lbUsername.AutoSize = true;
-            this.lbUsername.Location = new System.Drawing.Point(156, 136);
+            this.lbUsername.Location = new System.Drawing.Point(126, 136);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(75, 20);
+            this.lbUsername.Size = new System.Drawing.Size(118, 20);
             this.lbUsername.TabIndex = 1;
-            this.lbUsername.Text = "Username";
+            this.lbUsername.Text = "Username/Email";
             // 
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(156, 199);
+            this.lbPassword.Location = new System.Drawing.Point(126, 199);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(70, 20);
             this.lbPassword.TabIndex = 2;

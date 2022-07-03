@@ -2,7 +2,6 @@
 {
     public class MemberObject
     {
-
         public int MemberID { get; set; }
         public String MemberName { get; set; }
         public String Email { get; set; }

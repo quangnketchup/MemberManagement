@@ -29,7 +29,6 @@ namespace DataAccess
             }
         }
         //==============================
-        //Initialize member list 
        
         public IEnumerable<MemberObject> GetMemberList()
         {
