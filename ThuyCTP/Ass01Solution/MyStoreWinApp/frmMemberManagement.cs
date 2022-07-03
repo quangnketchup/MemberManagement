@@ -97,6 +97,7 @@ namespace MyStoreWinApp
             }
             return member;
         }
+        //Load Member to window form
         public void LoadMemberList()
         {
             var members = memberRepository.GetMembers();
